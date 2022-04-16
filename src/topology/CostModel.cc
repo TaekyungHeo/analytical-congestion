@@ -13,7 +13,7 @@ CostModel::CostModel() noexcept {
   // Define cost here
   network_total_cost = 0;
 
-  resources_cost_table[DimensionType::Tile][ResourceType::Link] = 1.0;
+  resources_cost_table[DimensionType::Tile][ResourceType::Link] = 2.0;
   resources_cost_table[DimensionType::Tile][ResourceType::Switch] = -1;
   resources_cost_table[DimensionType::Tile][ResourceType::Nic] = -1;
 
@@ -25,9 +25,9 @@ CostModel::CostModel() noexcept {
   resources_cost_table[DimensionType::Node][ResourceType::Switch] = 13.0;
   resources_cost_table[DimensionType::Node][ResourceType::Nic] = 0;
 
-  resources_cost_table[DimensionType::Pod][ResourceType::Link] = 7.4;
-  resources_cost_table[DimensionType::Pod][ResourceType::Switch] = 23.7;
-  resources_cost_table[DimensionType::Pod][ResourceType::Nic] = 47.8;
+  resources_cost_table[DimensionType::Pod][ResourceType::Link] = 7.8;
+  resources_cost_table[DimensionType::Pod][ResourceType::Switch] = 18.0;
+  resources_cost_table[DimensionType::Pod][ResourceType::Nic] = 31.6;
 }
 
 std::string CostModel::resourceTypeToStr(ResourceType resource_type) noexcept {
