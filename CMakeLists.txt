@@ -15,7 +15,7 @@ add_executable(AnalyticalAstra ${srcs})
 
 # Link libraries
 target_link_libraries(AnalyticalAstra LINK_PUBLIC AstraSim)
-target_link_libraries(AnalyticalAstra LINK_PRIVATE Boost::program_options)
+target_link_libraries(AnalyticalAstra LINK_PRIVATE Boost::program_options -lprotobuf -lpthread)
 
 # Resulting binary location settings
 set_target_properties(AnalyticalAstra
