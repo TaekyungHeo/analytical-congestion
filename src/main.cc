@@ -38,6 +38,8 @@ int main(int argc, char* argv[]) {
       "system-configuration", "System configuration file");
   cmd_parser.add_command_line_option<std::string>(
       "workload-configuration", "Workload configuration file");
+  cmd_parser.add_command_line_option<std::string>(
+      "comm-group-configuration", "Communicator group configuration file");
   cmd_parser.add_command_line_option<int>(
       "num-passes", "Number of passes to run");
   cmd_parser.add_command_line_option<int>(
