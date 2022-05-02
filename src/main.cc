@@ -87,6 +87,9 @@ int main(int argc, char* argv[]) {
   std::string workload_configuration = "workload path not defined";
   cmd_parser.set_if_defined("workload-configuration", &workload_configuration);
 
+  std::string comm_group_configuration = "communicator group path not defined";
+  cmd_parser.set_if_defined("comm-group-configuration", &comm_group_configuration);
+
   int num_passes = 1;
   cmd_parser.set_if_defined("num-passes", &num_passes);
 
@@ -243,6 +246,7 @@ int main(int argc, char* argv[]) {
         queues_per_dim, // queues per corresponding dimension
         system_configuration, // system configuration
         workload_configuration, // workload configuration
+        comm_group_configuration, // communicator group configuration
         comm_scale,
         compute_scale,
         injection_scale, // communication, computation, injection scale
