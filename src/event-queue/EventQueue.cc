@@ -17,7 +17,7 @@ void Analytical::EventQueue::add_event(
   //            -> insert new event queue element
 
   // should assign event that happens later than current_time
-  assert(EventQueueEntry::compare_time_stamp(current_time, time_stamp) < 0);
+  assert(EventQueueEntry::compare_time_stamp(current_time, time_stamp) <= 0);
 
   for (auto it = event_queue.begin(); it != event_queue.end(); it++) {
     auto time_stamp_compare_result =
