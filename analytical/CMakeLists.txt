@@ -6,8 +6,8 @@ find_package(Boost 1.40 REQUIRED COMPONENTS program_options)
 
 # Include src files to compile
 file(GLOB_RECURSE srcs
-        "${PROJECT_SOURCE_DIR}/src/*.hh"
-        "${PROJECT_SOURCE_DIR}/src/*.cc"
+        "${PROJECT_SOURCE_DIR}/*.hh"
+        "${PROJECT_SOURCE_DIR}/*.cc"
         )
 
 # Compile sources
