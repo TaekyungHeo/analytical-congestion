@@ -229,35 +229,30 @@ int main(int argc, char* argv[]) {
   Analytical::AnalyticalNetwork::setTopology(topology);
   Analytical::AnalyticalNetwork::setCostModel(&cost_model);
 
-  for (int i = 0; i < npus_count; i++) {
-    analytical_networks[i] =
-        std::make_unique<Analytical::AnalyticalNetwork>(i, dimensions_count);
+  for (int npu_id = 0; npu_id < npus_count; npu_id++) {
+    analytical_networks[npu_id] =
+        std::make_unique<Analytical::AnalyticalNetwork>(npu_id, dimensions_count);
 
-    memories[i] = std::make_unique<AstraSim::SimpleMemory>(
-        (AstraSim::AstraNetworkAPI*)(analytical_networks[i].get()),
+    memories[npu_id] = std::make_unique<AstraSim::SimpleMemory>(
+        (AstraSim::AstraNetworkAPI*)(analytical_networks[npu_id].get()),
         1,
         500000,
         12.5);
 
-    systems[i] = new AstraSim::Sys(
-        analytical_networks[i].get(), // AstraNetworkAPI
-        memories[i].get(), // AstraMemoryAPI
-        i, // id
-        num_passes, // num_passes
-        physical_dims, // dimensions
-        queues_per_dim, // queues per corresponding dimension
-        system_configuration, // system configuration
-        workload_configuration, // workload configuration
-        comm_group_configuration, // communicator group configuration
+    systems[npu_id] = new AstraSim::Sys(
+        npu_id,
+        memories[npu_id].get(),
+        workload_configuration,
+        comm_group_configuration,
+        system_configuration,
+        analytical_networks[npu_id].get(),
+        physical_dims,
+        queues_per_dim,
         comm_scale,
         compute_scale,
-        injection_scale, // communication, computation, injection scale
-        total_stat_rows,
-        stat_row, // total_stat_rows and stat_row
-        path, // stat file path
-        run_name, // run name
-        true, // separate_log
-        rendezvous_protocol // randezvous protocol
+        injection_scale,
+        run_name,
+        rendezvous_protocol
     );
   }
 
