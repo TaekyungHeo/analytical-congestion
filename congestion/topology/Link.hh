@@ -7,6 +7,7 @@ LICENSE file in the root directory of this source tree.
 #define CONGESTION_LINK_HH
 
 #include <queue>
+#include <memory>
 #include "../event-queue/Event.hh"
 #include "../event-queue/EventQueue.hh"
 #include "Chunk.hh"
